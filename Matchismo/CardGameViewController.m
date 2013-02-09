@@ -8,24 +8,60 @@
 
 #import "CardGameViewController.h"
 #import "PlayingCardDeck.h"
+#import "CardMatchingGame.h"
 
 @interface CardGameViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
 @property (nonatomic) int flipCount;
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 
-@property (strong, nonatomic) PlayingCardDeck *deck;
+//@property (strong, nonatomic) Deck *deck;
+@property (strong, nonatomic) CardMatchingGame *game;
 
 @end
 
 @implementation CardGameViewController
 
-- (PlayingCardDeck *)deck
+- (void)setCardButtons:(NSArray *)cardButtons
+{
+    _cardButtons = cardButtons;
+    /*for (UIButton *cardButton in self.cardButtons) {
+        Card *card = [self.deck drawRandomCard];
+        [cardButton setTitle:card.contents forState:UIControlStateSelected];
+    }*/
+    [self updateUI];
+}
+
+- (void)updateUI
+{
+    for (UIButton *cardButton in self.cardButtons) {
+        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
+        [cardButton setTitle:card.contents forState:UIControlStateSelected];
+        [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
+        cardButton.selected = card.isFaceUp;
+        cardButton.enabled = !card.isUnplayable;
+        cardButton.alpha = (card.isUnplayable ? 0.3 : 1.0);
+    }
+    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+}
+
+/*- (Deck *)deck
 {
     if (!_deck) {
         _deck = [[PlayingCardDeck alloc] init];
     }
     return _deck;
+}*/
+
+- (CardMatchingGame *)game
+{
+    if (!_game) {
+        _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+                                                  usingDeck:[[PlayingCardDeck alloc] init]];
+    }
+    return _game;
 }
 
 - (void)setFlipCount:(int)flipCount
@@ -36,18 +72,16 @@
 
 - (IBAction)flipCard:(UIButton *)sender
 {
-    if (!sender.isSelected) {
+    /*if (!sender.isSelected) {
         [sender setTitle:[self.deck drawRandomCard].contents
                 forState:UIControlStateSelected];
-    }
+    }*/
     
-    sender.selected = !sender.selected;
+    //sender.selected = !sender.selected;
+    
+    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     self.flipCount++;
-    
-}
-
-- (void)viewDidLoad
-{
+    [self updateUI];
     
 }
 
