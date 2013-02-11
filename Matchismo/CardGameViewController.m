@@ -38,6 +38,8 @@
 
 - (void)updateUI
 {
+    UIImage *cardBackImage = [UIImage imageNamed:@"cardback.png"];
+    
     for (UIButton *cardButton in self.cardButtons) {
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
@@ -45,6 +47,12 @@
         cardButton.selected = card.isFaceUp;
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = (card.isUnplayable ? 0.3 : 1.0);
+        
+        if (!card.isFaceUp) {
+            [cardButton setImage:cardBackImage forState:UIControlStateNormal];            
+        } else {
+            [cardButton setImage:nil forState:UIControlStateNormal];
+        }
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
     self.resultOfLastFlipLabel.text = self.game.descriptionOfLastFlip;

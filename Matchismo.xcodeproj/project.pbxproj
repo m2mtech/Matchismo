@@ -24,6 +24,7 @@
 		5B20E00816B2C17A001353A7 /* PlayingCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B20E00716B2C17A001353A7 /* PlayingCardDeck.m */; };
 		5B20E01A16B2C8B6001353A7 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 5B20E01916B2C8B6001353A7 /* README */; };
 		5B24659A16C6BF4F0045E32C /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B24659916C6BF4F0045E32C /* CardMatchingGame.m */; };
+		5B78485316C92A0B004AEFBF /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B78485216C92A0B004AEFBF /* cardback.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		5B20E01916B2C8B6001353A7 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		5B24659816C6BF4F0045E32C /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
 		5B24659916C6BF4F0045E32C /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
+		5B78485216C92A0B004AEFBF /* cardback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardback.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				5B20DFF116B2B110001353A7 /* MainStoryboard.storyboard */,
 				5B20DFF416B2B110001353A7 /* CardGameViewController.h */,
 				5B20DFF516B2B110001353A7 /* CardGameViewController.m */,
+				5B78485216C92A0B004AEFBF /* cardback.png */,
 				5B20E00216B2B78C001353A7 /* Model */,
 				5B20DFE016B2B110001353A7 /* Supporting Files */,
 			);
@@ -201,6 +204,7 @@
 				5B20DFF016B2B110001353A7 /* Default-568h@2x.png in Resources */,
 				5B20DFF316B2B110001353A7 /* MainStoryboard.storyboard in Resources */,
 				5B20E01A16B2C8B6001353A7 /* README in Resources */,
+				5B78485316C92A0B004AEFBF /* cardback.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
