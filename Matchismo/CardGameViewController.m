@@ -17,6 +17,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
 @property (weak, nonatomic) IBOutlet UILabel *resultOfLastFlipLabel;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *cardModeSelector;
 
 //@property (strong, nonatomic) Deck *deck;
 @property (strong, nonatomic) CardMatchingGame *game;
@@ -62,6 +63,7 @@
     if (!_game) {
         _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
                                                   usingDeck:[[PlayingCardDeck alloc] init]];
+        [self cardModeChanged:self.cardModeSelector];
     }
     return _game;
 }
@@ -90,6 +92,26 @@
 - (IBAction)dealButtonPressed:(UIButton *)sender {
     self.game = nil;
     self.flipCount = 0;
+    [self updateUI];
+}
+
+- (IBAction)cardModeChanged:(UISegmentedControl *)sender {
+    switch ([sender selectedSegmentIndex]) {
+        case 0:
+            self.game.numberOfMatchingCards = 2;
+            break;
+        case 1:
+            self.game.numberOfMatchingCards = 3;
+            break;
+        default:
+            self.game.numberOfMatchingCards = 2;
+            break;
+    }
+}
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
     [self updateUI];
 }
 

@@ -41,12 +41,16 @@
 {
     int score = 0;
     
-    if ([otherCards count] == 1) {
-        PlayingCard *otherCard = [otherCards lastObject];
-        if ([otherCard.suit isEqualToString:self.suit]) {
-            score = 1;
-        } else if (otherCard.rank == self.rank) {
-            score = 4;
+    if ([otherCards count]) {
+        for (PlayingCard *otherCard in otherCards) {
+            if ([otherCard.suit isEqualToString:self.suit]) {
+                score += 1;
+            } else if (otherCard.rank == self.rank) {
+                score += 4;
+            } else {
+                score = 0;
+                break;
+            }
         }
     }
 

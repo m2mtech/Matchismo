@@ -15,6 +15,8 @@
 @property (readonly, nonatomic) int score;
 @property (readonly, nonatomic) NSString *descriptionOfLastFlip;
 
+@property (nonatomic) int numberOfMatchingCards;
+
 // designated initializer
 - (id)initWithCardCount:(NSUInteger)count
               usingDeck:(Deck *)deck;

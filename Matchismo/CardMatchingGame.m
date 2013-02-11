@@ -13,12 +13,13 @@
 @property (readwrite, nonatomic) int score;
 @property (readwrite, nonatomic) NSString *descriptionOfLastFlip;
 
-
 @property (strong, nonatomic) NSMutableArray *cards; // of Card
 
 @end
 
 @implementation CardMatchingGame
+
+@synthesize numberOfMatchingCards = _numberOfMatchingCards;
 
 - (NSMutableArray *)cards
 {
@@ -26,6 +27,21 @@
         _cards = [[NSMutableArray alloc] init];
     }
     return _cards;
+}
+
+- (int)numberOfMatchingCards
+{
+    if (!_numberOfMatchingCards) {
+        _numberOfMatchingCards = 2;
+    }
+    return _numberOfMatchingCards;
+}
+
+- (void)setNumberOfMatchingCards:(int)numberOfMatchingCards
+{
+    if (numberOfMatchingCards < 2) _numberOfMatchingCards = 2;
+    else if (numberOfMatchingCards > 3) _numberOfMatchingCards = 3;
+    else _numberOfMatchingCards = numberOfMatchingCards;
 }
 
 - (id)initWithCardCount:(NSUInteger)count
@@ -63,28 +79,44 @@
     
     if (card && !card.isUnplayable) {
         if (!card.isFaceUp) {
-            self.descriptionOfLastFlip = [NSString stringWithFormat:@"Flipped up %@", card.contents];
+            NSMutableArray *otherCards = [[NSMutableArray alloc] init];
+            NSMutableArray *otherContents = [[NSMutableArray alloc] init];
             for (Card *otherCard in self.cards) {
                 if (otherCard.isFaceUp && !otherCard.isUnplayable) {
-                    int matchScore = [card match:@[otherCard]];
-                    if (matchScore) {
-                        card.unplayable = YES;
-                        otherCard.unplayable = YES;
-                        self.score += matchScore * MATCH_BONUS;
-                        self.descriptionOfLastFlip = [NSString stringWithFormat:@"Matched %@ & %@ for %d points",
-                                                      card.contents, otherCard.contents,
-                                                      matchScore * MATCH_BONUS];
-                    } else {
-                        otherCard.faceUp = NO;
-                        self.score -= MISMATCH_PENALTY;
-                        self.descriptionOfLastFlip = [NSString stringWithFormat:@"%@ and %@ don’t match! %d point penalty!",
-                                                      card.contents, otherCard.contents,
-                                                      MISMATCH_PENALTY];
-                    }
-                    break;
+                    [otherCards addObject:otherCard];
+                    [otherContents addObject:otherCard.contents];
                 }
             }
-            self.score -= FLIP_COST;            
+            if ([otherCards count] < self.numberOfMatchingCards - 1) {
+                self.descriptionOfLastFlip = [NSString stringWithFormat:@"Flipped up %@", card.contents];
+            } else {
+                int matchScore = [card match:otherCards];
+                NSLog(@"%d", matchScore);
+                if (matchScore) {
+                    card.unplayable = YES;
+                    for (Card *otherCard in otherCards) {
+                        otherCard.unplayable = YES;
+                        
+                    }
+                    self.score += matchScore * MATCH_BONUS;              
+                    self.descriptionOfLastFlip =
+                        [NSString stringWithFormat:@"Matched %@ & %@ for %d points",
+                         card.contents,
+                         [otherContents componentsJoinedByString:@" & "],
+                         matchScore * MATCH_BONUS];
+                } else {
+                    for (Card *otherCard in otherCards) {
+                        otherCard.faceUp = NO;
+                    }                    
+                    self.score -= MISMATCH_PENALTY;
+                    self.descriptionOfLastFlip =
+                        [NSString stringWithFormat:@"%@ & %@ don’t match! %d point penalty!",
+                         card.contents,
+                         [otherContents componentsJoinedByString:@" & "],
+                         MISMATCH_PENALTY];
+                }
+            }
+            self.score -= FLIP_COST;
         }
         card.faceUp = !card.faceUp;
     }
