@@ -83,6 +83,7 @@
     
     //sender.selected = !sender.selected;
     
+    self.cardModeSelector.enabled = NO;
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     self.flipCount++;
     [self updateUI];
@@ -92,6 +93,7 @@
 - (IBAction)dealButtonPressed:(UIButton *)sender {
     self.game = nil;
     self.flipCount = 0;
+    self.cardModeSelector.enabled = YES;
     [self updateUI];
 }
 

@@ -91,7 +91,6 @@
                 self.descriptionOfLastFlip = [NSString stringWithFormat:@"Flipped up %@", card.contents];
             } else {
                 int matchScore = [card match:otherCards];
-                NSLog(@"%d", matchScore);
                 if (matchScore) {
                     card.unplayable = YES;
                     for (Card *otherCard in otherCards) {
