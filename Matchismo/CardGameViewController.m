@@ -18,13 +18,23 @@
 @property (weak, nonatomic) IBOutlet UILabel *resultOfLastFlipLabel;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *cardModeSelector;
+@property (weak, nonatomic) IBOutlet UISlider *historySlider;
 
 //@property (strong, nonatomic) Deck *deck;
 @property (strong, nonatomic) CardMatchingGame *game;
 
+@property (strong, nonatomic) NSMutableArray *history;
+
 @end
 
 @implementation CardGameViewController
+
+- (NSMutableArray *)history {
+    if (!_history) {
+        _history = [[NSMutableArray alloc] init];
+    }
+    return _history;
+}
 
 - (void)setCardButtons:(NSArray *)cardButtons
 {
@@ -55,7 +65,10 @@
         }
     }
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    self.resultOfLastFlipLabel.alpha = 1;
     self.resultOfLastFlipLabel.text = self.game.descriptionOfLastFlip;
+
+    [self updateSliderRange];
 }
 
 /*- (Deck *)deck
@@ -94,14 +107,18 @@
     self.cardModeSelector.enabled = NO;
     [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
     self.flipCount++;
+
+    if (![[self.history lastObject] isEqualToString:self.game.descriptionOfLastFlip])
+        [self.history addObject:self.game.descriptionOfLastFlip];
+
     [self updateUI];
-    
 }
 
 - (IBAction)dealButtonPressed:(UIButton *)sender {
     self.game = nil;
     self.flipCount = 0;
     self.cardModeSelector.enabled = YES;
+    self.history = nil;
     [self updateUI];
 }
 
@@ -116,6 +133,25 @@
         default:
             self.game.numberOfMatchingCards = 2;
             break;
+    }
+}
+
+- (void)updateSliderRange
+{
+    int maxValue = [self.history count] - 1;
+    if (maxValue < 0) maxValue = 0;
+    self.historySlider.maximumValue = maxValue;
+    [self.historySlider setValue:maxValue animated:YES];
+}
+
+- (IBAction)historySliderChanged:(UISlider *)sender {
+    int sliderValue;
+    sliderValue = lroundf(self.historySlider.value);
+    [self.historySlider setValue:sliderValue animated:NO];
+
+    if ([self.history count]) {
+        self.resultOfLastFlipLabel.alpha = (sliderValue + 1 < [self.history count]) ? 0.6 : 1.0;
+        self.resultOfLastFlipLabel.text = [self.history objectAtIndex:sliderValue];        
     }
 }
 
