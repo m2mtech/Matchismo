@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B1B8ED016CD74BB00C2BC44 /* GameResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B8ECF16CD74BB00C2BC44 /* GameResultViewController.m */; };
 		5B20DFDA16B2B110001353A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B20DFD916B2B110001353A7 /* UIKit.framework */; };
 		5B20DFDC16B2B110001353A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B20DFDB16B2B110001353A7 /* Foundation.framework */; };
 		5B20DFDE16B2B110001353A7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B20DFDD16B2B110001353A7 /* CoreGraphics.framework */; };
@@ -25,9 +26,12 @@
 		5B20E01A16B2C8B6001353A7 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 5B20E01916B2C8B6001353A7 /* README */; };
 		5B24659A16C6BF4F0045E32C /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B24659916C6BF4F0045E32C /* CardMatchingGame.m */; };
 		5B78485316C92A0B004AEFBF /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B78485216C92A0B004AEFBF /* cardback.png */; };
+		5BD5CA4816CD797700152740 /* GameResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD5CA4716CD797700152740 /* GameResult.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B1B8ECE16CD74BB00C2BC44 /* GameResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameResultViewController.h; sourceTree = "<group>"; };
+		5B1B8ECF16CD74BB00C2BC44 /* GameResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameResultViewController.m; sourceTree = "<group>"; };
 		5B20DFD516B2B110001353A7 /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B20DFD916B2B110001353A7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5B20DFDB16B2B110001353A7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -56,6 +60,8 @@
 		5B24659816C6BF4F0045E32C /* CardMatchingGame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardMatchingGame.h; sourceTree = "<group>"; };
 		5B24659916C6BF4F0045E32C /* CardMatchingGame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardMatchingGame.m; sourceTree = "<group>"; };
 		5B78485216C92A0B004AEFBF /* cardback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardback.png; sourceTree = "<group>"; };
+		5BD5CA4616CD797700152740 /* GameResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameResult.h; sourceTree = "<group>"; };
+		5BD5CA4716CD797700152740 /* GameResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameResult.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +113,10 @@
 				5B20DFF416B2B110001353A7 /* CardGameViewController.h */,
 				5B20DFF516B2B110001353A7 /* CardGameViewController.m */,
 				5B78485216C92A0B004AEFBF /* cardback.png */,
+				5B1B8ECE16CD74BB00C2BC44 /* GameResultViewController.h */,
+				5B1B8ECF16CD74BB00C2BC44 /* GameResultViewController.m */,
+				5BD5CA4616CD797700152740 /* GameResult.h */,
+				5BD5CA4716CD797700152740 /* GameResult.m */,
 				5B20E00216B2B78C001353A7 /* Model */,
 				5B20DFE016B2B110001353A7 /* Supporting Files */,
 			);
@@ -223,6 +233,8 @@
 				5B20E00516B2BC69001353A7 /* PlayingCard.m in Sources */,
 				5B20E00816B2C17A001353A7 /* PlayingCardDeck.m in Sources */,
 				5B24659A16C6BF4F0045E32C /* CardMatchingGame.m in Sources */,
+				5B1B8ED016CD74BB00C2BC44 /* GameResultViewController.m in Sources */,
+				5BD5CA4816CD797700152740 /* GameResult.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@
 #import "CardGameViewController.h"
 #import "PlayingCardDeck.h"
 #import "CardMatchingGame.h"
+#import "GameResult.h"
 
 @interface CardGameViewController ()
 
@@ -25,9 +26,17 @@
 
 @property (strong, nonatomic) NSMutableArray *history;
 
+@property (strong, nonatomic) GameResult *gameResult;
+
 @end
 
 @implementation CardGameViewController
+
+- (GameResult *)gameResult
+{
+    if (!_gameResult) _gameResult = [[GameResult alloc] init];
+    return _gameResult;
+}
 
 - (NSMutableArray *)history {
     if (!_history) {
@@ -111,6 +120,8 @@
     if (![[self.history lastObject] isEqualToString:self.game.descriptionOfLastFlip])
         [self.history addObject:self.game.descriptionOfLastFlip];
 
+    self.gameResult.score = self.game.score;
+    
     [self updateUI];
 }
 
@@ -119,6 +130,7 @@
     self.flipCount = 0;
     self.cardModeSelector.enabled = YES;
     self.history = nil;
+    self.gameResult = nil;
     [self updateUI];
 }
 
