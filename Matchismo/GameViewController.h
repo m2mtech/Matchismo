@@ -35,5 +35,6 @@
 - (IBAction)dealButtonPressed:(UIButton *)sender;
 - (IBAction)cardModeChanged:(UISegmentedControl *)sender;
 - (IBAction)historySliderChanged:(UISlider *)sender;
+- (void)updateSliderRange;
 
 @end

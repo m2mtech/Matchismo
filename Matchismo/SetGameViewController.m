@@ -28,4 +28,23 @@
     return _game;
 }
 
+- (void)updateUI
+{
+    for (UIButton *cardButton in self.cardButtons) {
+        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
+        [cardButton setTitle:card.contents forState:UIControlStateNormal];
+        cardButton.selected = card.isFaceUp;
+        cardButton.enabled = !card.isUnplayable;
+        cardButton.alpha = (card.isUnplayable ? 0.3 : 1.0);
+        if (card.isFaceUp) {
+            [cardButton setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
+        } else {
+            [cardButton setBackgroundColor:[UIColor clearColor]];
+        }
+    }
+    
+    [super updateUI];
+}
+
+
 @end
