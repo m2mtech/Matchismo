@@ -64,14 +64,28 @@
     return self;
 }
 
+- (int)matchBonus
+{
+    if (!_matchBonus) _matchBonus = 4;
+    return _matchBonus;
+}
+
+- (int)mismatchPenalty
+{
+    if (!_mismatchPenalty) _mismatchPenalty = 2;
+    return _mismatchPenalty;
+}
+
+- (int)flipCost
+{
+    if (!_flipCost) _flipCost = 1;
+    return _flipCost;
+}
+
 - (Card *)cardAtIndex:(NSUInteger)index
 {
     return (index < [self.cards count] ? self.cards[index] : nil);
 }
-
-#define MATCH_BONUS 4
-#define MISMATCH_PENALTY 2
-#define FLIP_COST 1
 
 - (void)flipCardAtIndex:(NSUInteger)index
 {
@@ -97,25 +111,25 @@
                         otherCard.unplayable = YES;
                         
                     }
-                    self.score += matchScore * MATCH_BONUS;              
+                    self.score += matchScore * self.matchBonus;
                     self.descriptionOfLastFlip =
                         [NSString stringWithFormat:@"Matched %@ & %@ for %d points",
                          card.contents,
                          [otherContents componentsJoinedByString:@" & "],
-                         matchScore * MATCH_BONUS];
+                         matchScore * self.matchBonus];
                 } else {
                     for (Card *otherCard in otherCards) {
                         otherCard.faceUp = NO;
                     }                    
-                    self.score -= MISMATCH_PENALTY;
+                    self.score -= self.mismatchPenalty;
                     self.descriptionOfLastFlip =
                         [NSString stringWithFormat:@"%@ & %@ don’t match! %d point penalty!",
                          card.contents,
                          [otherContents componentsJoinedByString:@" & "],
-                         MISMATCH_PENALTY];
+                         self.mismatchPenalty];
                 }
             }
-            self.score -= FLIP_COST;
+            self.score -= self.flipCost;
         }
         card.faceUp = !card.faceUp;
     }

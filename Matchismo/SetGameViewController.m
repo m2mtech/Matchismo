@@ -23,6 +23,7 @@
         _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
                                                   usingDeck:[[SetCardDeck alloc] init]];
         self.game.numberOfMatchingCards = 3;
+        self.game.matchBonus = 2;
     }
     return _game;
 }
