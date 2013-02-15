@@ -7,11 +7,24 @@
 //
 
 #import "SetGameViewController.h"
+#import "SetCardDeck.h"
 
 @interface SetGameViewController ()
 
 @end
 
 @implementation SetGameViewController
+
+@synthesize game = _game;
+
+- (CardMatchingGame *)game
+{
+    if (!_game) {
+        _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
+                                                  usingDeck:[[SetCardDeck alloc] init]];
+        self.game.numberOfMatchingCards = 3;
+    }
+    return _game;
+}
 
 @end

@@ -304,17 +304,6 @@
                                     <action selector="dealButtonPressed:" destination="2" eventType="touchUpInside" id="hw1-jT-Q2l"/>
                                 </connections>
                             </button>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="I5B-dg-EEj">
-                                <rect key="frame" x="120" y="365" width="80" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="2"/>
-                                    <segment title="3"/>
-                                </segments>
-                                <connections>
-                                    <action selector="cardModeChanged:" destination="2" eventType="valueChanged" id="qd1-L6-JJb"/>
-                                </connections>
-                            </segmentedControl>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="YRr-nu-JhE">
                                 <rect key="frame" x="26" y="335" width="268" height="23"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -327,7 +316,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Card Matching" id="qDR-MB-tc6"/>
                     <connections>
-                        <outlet property="cardModeSelector" destination="I5B-dg-EEj" id="RsV-dY-H1v"/>
                         <outlet property="flipsLabel" destination="cmC-1j-D9f" id="Iu3-WD-vcO"/>
                         <outlet property="historySlider" destination="YRr-nu-JhE" id="FoI-QM-XGm"/>
                         <outlet property="resultOfLastFlipLabel" destination="XzV-bh-OL6" id="kJ0-wO-A8T"/>
@@ -465,6 +453,15 @@
     <classes>
         <class className="CardGameViewController" superclassName="GameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
+        </class>
+        <class className="GameResultViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameResultViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="display" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="GameViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameViewController.h"/>
             <relationships>
                 <relationship kind="action" name="cardModeChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="action" name="dealButtonPressed:" candidateClass="UIButton"/>
@@ -477,15 +474,6 @@
                 <relationship kind="outlet" name="scoreLabel" candidateClass="UILabel"/>
                 <relationship kind="outletCollection" name="cardButtons" candidateClass="UIButton"/>
             </relationships>
-        </class>
-        <class className="GameResultViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameResultViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="display" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="GameViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GameViewController.h"/>
         </class>
         <class className="SetGameViewController" superclassName="GameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SetGameViewController.h"/>
