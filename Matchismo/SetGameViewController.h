@@ -1,13 +1,13 @@
 //
-//  CardGameViewController.h
+//  SetGameViewController.h
 //  Matchismo
 //
-//  Created by Martin Mandl on 25.01.13.
+//  Created by Martin Mandl on 15.02.13.
 //  Copyright (c) 2013 m2m server software gmbh. All rights reserved.
 //
 
 #import "GameViewController.h"
 
-@interface CardGameViewController : GameViewController
+@interface SetGameViewController : GameViewController
 
 @end

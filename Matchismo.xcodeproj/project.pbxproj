@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B0D8E0816CE631200894169 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D8E0716CE631200894169 /* GameViewController.m */; };
+		5B0D8E0B16CE63A500894169 /* SetGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D8E0A16CE63A500894169 /* SetGameViewController.m */; };
 		5B1B8ED016CD74BB00C2BC44 /* GameResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B1B8ECF16CD74BB00C2BC44 /* GameResultViewController.m */; };
 		5B20DFDA16B2B110001353A7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B20DFD916B2B110001353A7 /* UIKit.framework */; };
 		5B20DFDC16B2B110001353A7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B20DFDB16B2B110001353A7 /* Foundation.framework */; };
@@ -30,6 +32,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B0D8E0616CE631200894169 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		5B0D8E0716CE631200894169 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		5B0D8E0916CE63A500894169 /* SetGameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetGameViewController.h; sourceTree = "<group>"; };
+		5B0D8E0A16CE63A500894169 /* SetGameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetGameViewController.m; sourceTree = "<group>"; };
 		5B1B8ECE16CD74BB00C2BC44 /* GameResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameResultViewController.h; sourceTree = "<group>"; };
 		5B1B8ECF16CD74BB00C2BC44 /* GameResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameResultViewController.m; sourceTree = "<group>"; };
 		5B20DFD516B2B110001353A7 /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,8 +116,12 @@
 			isa = PBXGroup;
 			children = (
 				5B20DFF116B2B110001353A7 /* MainStoryboard.storyboard */,
+				5B0D8E0616CE631200894169 /* GameViewController.h */,
+				5B0D8E0716CE631200894169 /* GameViewController.m */,
 				5B20DFF416B2B110001353A7 /* CardGameViewController.h */,
 				5B20DFF516B2B110001353A7 /* CardGameViewController.m */,
+				5B0D8E0916CE63A500894169 /* SetGameViewController.h */,
+				5B0D8E0A16CE63A500894169 /* SetGameViewController.m */,
 				5B78485216C92A0B004AEFBF /* cardback.png */,
 				5B1B8ECE16CD74BB00C2BC44 /* GameResultViewController.h */,
 				5B1B8ECF16CD74BB00C2BC44 /* GameResultViewController.m */,
@@ -235,6 +245,8 @@
 				5B24659A16C6BF4F0045E32C /* CardMatchingGame.m in Sources */,
 				5B1B8ED016CD74BB00C2BC44 /* GameResultViewController.m in Sources */,
 				5BD5CA4816CD797700152740 /* GameResult.m in Sources */,
+				5B0D8E0816CE631200894169 /* GameViewController.m in Sources */,
+				5B0D8E0B16CE63A500894169 /* SetGameViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
