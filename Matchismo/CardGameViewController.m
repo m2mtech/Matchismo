@@ -24,7 +24,10 @@
         _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
                                                   usingDeck:[[PlayingCardDeck alloc] init]];
         //[self cardModeChanged:self.cardModeSelector];
-        self.game.numberOfMatchingCards = 2;
+        _game.numberOfMatchingCards = 2;
+        _game.matchBonus = self.gameSettings.matchBonus;
+        _game.mismatchPenalty = self.gameSettings.mismatchPenalty;
+        _game.flipCost = self.gameSettings.flipCost;
     }
     return _game;
 }

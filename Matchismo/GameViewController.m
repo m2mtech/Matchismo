@@ -44,6 +44,12 @@
     return _gameResult;
 }
 
+- (GameSettings *)gameSettings
+{
+    if (!_gameSettings) _gameSettings = [[GameSettings alloc] init];
+    return _gameSettings;
+}
+
 - (void)updateUI
 {
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
@@ -107,6 +113,14 @@
         self.resultOfLastFlipLabel.alpha = (sliderValue + 1 < [self.history count]) ? 0.6 : 1.0;
         self.resultOfLastFlipLabel.text = [self.history objectAtIndex:sliderValue];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    self.game.matchBonus = self.gameSettings.matchBonus;
+    self.game.mismatchPenalty = self.gameSettings.mismatchPenalty;
+    self.game.flipCost = self.gameSettings.flipCost;
 }
 
 - (void)viewDidLoad

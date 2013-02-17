@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "CardMatchingGame.h"
 #import "GameResult.h"
+#import "GameSettings.h"
 
 @interface GameViewController : UIViewController
 
@@ -28,6 +29,8 @@
 @property (strong, nonatomic) CardMatchingGame *game;
 
 @property (strong, nonatomic) GameResult *gameResult;
+
+@property (strong, nonatomic) GameSettings *gameSettings;
 
 - (void)updateUI;
 

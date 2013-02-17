@@ -59,6 +59,9 @@
                 break;
             }            
         }
+        _matchBonus = -1;
+        _mismatchPenalty = -1;
+        _flipCost = -1;
     }
     
     return self;
@@ -66,19 +69,19 @@
 
 - (int)matchBonus
 {
-    if (!_matchBonus) _matchBonus = 4;
+    if (_matchBonus < 0) _matchBonus = 4;
     return _matchBonus;
 }
 
 - (int)mismatchPenalty
 {
-    if (!_mismatchPenalty) _mismatchPenalty = 2;
+    if (_mismatchPenalty < 0) _mismatchPenalty = 2;
     return _mismatchPenalty;
 }
 
 - (int)flipCost
 {
-    if (!_flipCost) _flipCost = 1;
+    if (_flipCost < 0) _flipCost = 1;
     return _flipCost;
 }
 

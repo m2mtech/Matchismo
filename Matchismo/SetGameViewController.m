@@ -24,8 +24,10 @@
     if (!_game) {
         _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
                                                   usingDeck:[[SetCardDeck alloc] init]];
-        self.game.numberOfMatchingCards = 3;
-        self.game.matchBonus = 2;
+        _game.numberOfMatchingCards = 3;
+        _game.matchBonus = self.gameSettings.matchBonus;
+        _game.mismatchPenalty = self.gameSettings.mismatchPenalty;
+        _game.flipCost = self.gameSettings.flipCost;
     }
     return _game;
 }
