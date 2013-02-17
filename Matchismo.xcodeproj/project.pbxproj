@@ -29,6 +29,9 @@
 		5B24659A16C6BF4F0045E32C /* CardMatchingGame.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B24659916C6BF4F0045E32C /* CardMatchingGame.m */; };
 		5B2A8A3016CE7D8400366133 /* SetCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A8A2F16CE7D8300366133 /* SetCard.m */; };
 		5B2A8A3316CE7DC400366133 /* SetCardDeck.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2A8A3216CE7DC400366133 /* SetCardDeck.m */; };
+		5B2A8A3816D0FC0100366133 /* playingcards.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B2A8A3716D0FC0100366133 /* playingcards.png */; };
+		5B2A8A4416D11E7F00366133 /* scores.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B2A8A4316D11E7F00366133 /* scores.png */; };
+		5B2A8A4616D11F6400366133 /* setcards.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B2A8A4516D11F6400366133 /* setcards.png */; };
 		5B78485316C92A0B004AEFBF /* cardback.png in Resources */ = {isa = PBXBuildFile; fileRef = 5B78485216C92A0B004AEFBF /* cardback.png */; };
 		5BD5CA4816CD797700152740 /* GameResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BD5CA4716CD797700152740 /* GameResult.m */; };
 /* End PBXBuildFile section */
@@ -71,6 +74,9 @@
 		5B2A8A2F16CE7D8300366133 /* SetCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCard.m; path = Model/SetCard.m; sourceTree = "<group>"; };
 		5B2A8A3116CE7DC400366133 /* SetCardDeck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetCardDeck.h; path = Model/SetCardDeck.h; sourceTree = "<group>"; };
 		5B2A8A3216CE7DC400366133 /* SetCardDeck.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetCardDeck.m; path = Model/SetCardDeck.m; sourceTree = "<group>"; };
+		5B2A8A3716D0FC0100366133 /* playingcards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playingcards.png; sourceTree = "<group>"; };
+		5B2A8A4316D11E7F00366133 /* scores.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scores.png; sourceTree = "<group>"; };
+		5B2A8A4516D11F6400366133 /* setcards.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setcards.png; sourceTree = "<group>"; };
 		5B78485216C92A0B004AEFBF /* cardback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardback.png; sourceTree = "<group>"; };
 		5BD5CA4616CD797700152740 /* GameResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameResult.h; sourceTree = "<group>"; };
 		5BD5CA4716CD797700152740 /* GameResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameResult.m; sourceTree = "<group>"; };
@@ -128,11 +134,11 @@
 				5B20DFF516B2B110001353A7 /* CardGameViewController.m */,
 				5B0D8E0916CE63A500894169 /* SetGameViewController.h */,
 				5B0D8E0A16CE63A500894169 /* SetGameViewController.m */,
-				5B78485216C92A0B004AEFBF /* cardback.png */,
 				5B1B8ECE16CD74BB00C2BC44 /* GameResultViewController.h */,
 				5B1B8ECF16CD74BB00C2BC44 /* GameResultViewController.m */,
 				5BD5CA4616CD797700152740 /* GameResult.h */,
 				5BD5CA4716CD797700152740 /* GameResult.m */,
+				5B2A8A3416D0FB4C00366133 /* Images */,
 				5B20E00216B2B78C001353A7 /* Model */,
 				5B20DFE016B2B110001353A7 /* Supporting Files */,
 			);
@@ -174,6 +180,17 @@
 				5B2A8A3216CE7DC400366133 /* SetCardDeck.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		5B2A8A3416D0FB4C00366133 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				5B78485216C92A0B004AEFBF /* cardback.png */,
+				5B2A8A3716D0FC0100366133 /* playingcards.png */,
+				5B2A8A4516D11F6400366133 /* setcards.png */,
+				5B2A8A4316D11E7F00366133 /* scores.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,6 +252,9 @@
 				5B20DFF316B2B110001353A7 /* MainStoryboard.storyboard in Resources */,
 				5B20E01A16B2C8B6001353A7 /* README in Resources */,
 				5B78485316C92A0B004AEFBF /* cardback.png in Resources */,
+				5B2A8A3816D0FC0100366133 /* playingcards.png in Resources */,
+				5B2A8A4416D11E7F00366133 /* scores.png in Resources */,
+				5B2A8A4616D11F6400366133 /* setcards.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

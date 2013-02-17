@@ -314,7 +314,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Card Matching" id="qDR-MB-tc6"/>
+                    <tabBarItem key="tabBarItem" title="Card Matching" image="playingcards.png" id="qDR-MB-tc6"/>
                     <connections>
                         <outlet property="flipsLabel" destination="cmC-1j-D9f" id="Iu3-WD-vcO"/>
                         <outlet property="historySlider" destination="YRr-nu-JhE" id="FoI-QM-XGm"/>
@@ -405,7 +405,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Scores" id="Yfd-hu-JtW"/>
+                    <tabBarItem key="tabBarItem" title="Scores" image="scores.png" id="Yfd-hu-JtW"/>
                     <connections>
                         <outlet property="display" destination="7t7-Nf-TB2" id="a8h-iP-C7f"/>
                     </connections>
@@ -900,7 +900,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Set" id="bZ6-eE-ykN"/>
+                    <tabBarItem key="tabBarItem" title="Set" image="setcards.png" id="bZ6-eE-ykN"/>
                     <connections>
                         <outlet property="flipsLabel" destination="wKE-ty-Zlw" id="Bpm-zA-2P9"/>
                         <outlet property="resultOfLastFlipLabel" destination="Abv-c0-L4g" id="gOX-Rm-Xo2"/>
@@ -956,6 +956,11 @@
             <point key="canvasLocation" x="-82" y="395"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="playingcards.png" width="30" height="30"/>
+        <image name="scores.png" width="30" height="30"/>
+        <image name="setcards.png" width="30" height="30"/>
+    </resources>
     <classes>
         <class className="CardGameViewController" superclassName="GameViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CardGameViewController.h"/>
