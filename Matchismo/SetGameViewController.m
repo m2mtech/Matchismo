@@ -17,6 +17,7 @@
 @implementation SetGameViewController
 
 @synthesize game = _game;
+@synthesize gameResult = _gameResult;
 
 - (CardMatchingGame *)game
 {
@@ -27,6 +28,13 @@
         self.game.matchBonus = 2;
     }
     return _game;
+}
+
+- (GameResult *)gameResult
+{
+    if (!_gameResult) _gameResult = [[GameResult alloc] init];
+    _gameResult.gameType = @"Set Game";
+    return _gameResult;
 }
 
 - (NSAttributedString *)updateAttributedString:(NSAttributedString *)attributedString withAttributesOfCard:(SetCard *)card

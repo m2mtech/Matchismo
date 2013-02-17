@@ -44,7 +44,6 @@
     return _gameResult;
 }
 
-
 - (void)updateUI
 {
     self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];

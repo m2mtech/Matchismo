@@ -22,7 +22,8 @@
 {
     NSString *displayText = @"";
     for (GameResult *result in self.allGameResults) {
-        displayText = [displayText stringByAppendingFormat:@"Score: %d, (%@, %gs)\n",
+        displayText = [displayText stringByAppendingFormat:@"%@: %d, (%@, %gs)\n",
+                       result.gameType ? result.gameType : @"Card Matching",
                        result.score,
                        [NSDateFormatter localizedStringFromDate:result.end
                                                       dateStyle:NSDateFormatterShortStyle

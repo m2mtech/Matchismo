@@ -16,6 +16,7 @@
 @implementation CardGameViewController
 
 @synthesize game = _game;
+@synthesize gameResult = _gameResult;
 
 - (CardMatchingGame *)game
 {
@@ -26,6 +27,13 @@
         self.game.numberOfMatchingCards = 2;
     }
     return _game;
+}
+
+- (GameResult *)gameResult
+{
+    if (!_gameResult) _gameResult = [[GameResult alloc] init];
+    _gameResult.gameType = @"Card Matching";
+    return _gameResult;
 }
 
 - (void)updateUI
