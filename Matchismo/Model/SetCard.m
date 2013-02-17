@@ -16,7 +16,7 @@
 
 - (NSString *)contents
 {
-    return self.symbol;
+    return [NSString stringWithFormat:@"%@:%@:%@:%d", self.symbol, self.color, self.shading, self.number];
 }
 
 - (NSString *)color

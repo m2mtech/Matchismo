@@ -33,7 +33,7 @@
 {
     NSMutableAttributedString *mutableAttributedString = [attributedString mutableCopy];
     
-    NSRange range = [[mutableAttributedString string] rangeOfString:card.symbol];
+    NSRange range = [[mutableAttributedString string] rangeOfString:card.contents];
     if (range.location != NSNotFound) {
         NSString *symbol = @"?";
         if ([card.symbol isEqualToString:@"oval"]) symbol = @"●";
@@ -71,13 +71,16 @@
 
 - (void)updateUI
 {
+    NSAttributedString *lastFlip = [[NSAttributedString alloc] initWithString:self.game.descriptionOfLastFlip ? self.game.descriptionOfLastFlip : @""];
+    
     for (UIButton *cardButton in self.cardButtons) {
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
         NSAttributedString *title = [[NSAttributedString alloc] initWithString:card.contents];
         if ([card isKindOfClass:[SetCard class]]) {
             SetCard *setCard = (SetCard *)card;
             title = [self updateAttributedString:title withAttributesOfCard:setCard];
-        }        
+            lastFlip = [self updateAttributedString:lastFlip withAttributesOfCard:setCard];
+       }
         [cardButton setAttributedTitle:title forState:UIControlStateNormal];
         cardButton.selected = card.isFaceUp;
         cardButton.enabled = !card.isUnplayable;
@@ -90,6 +93,8 @@
     }
     
     [super updateUI];
+    
+    self.resultOfLastFlipLabel.attributedText = lastFlip;
 }
 
 

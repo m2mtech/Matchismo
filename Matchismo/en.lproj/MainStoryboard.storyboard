@@ -870,17 +870,31 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Flips: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wKE-ty-Zlw">
-                                <rect key="frame" x="16" y="355" width="140" height="21"/>
+                                <rect key="frame" x="124" y="377" width="108" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rao-D0-qi2">
-                                <rect key="frame" x="16" y="377" width="136" height="21"/>
+                                <rect key="frame" x="16" y="377" width="100" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Abv-c0-L4g">
+                                <rect key="frame" x="12" y="348" width="220" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Label">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="17" name="Helvetica"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -889,6 +903,7 @@
                     <tabBarItem key="tabBarItem" title="Set" id="bZ6-eE-ykN"/>
                     <connections>
                         <outlet property="flipsLabel" destination="wKE-ty-Zlw" id="Bpm-zA-2P9"/>
+                        <outlet property="resultOfLastFlipLabel" destination="Abv-c0-L4g" id="gOX-Rm-Xo2"/>
                         <outlet property="scoreLabel" destination="rao-D0-qi2" id="Rqt-05-1iR"/>
                         <outletCollection property="cardButtons" destination="Yqj-s9-1ro" id="r64-LY-3DJ"/>
                         <outletCollection property="cardButtons" destination="shD-7L-TC3" id="LaK-i1-bPz"/>
