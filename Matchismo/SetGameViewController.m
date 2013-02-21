@@ -12,6 +12,8 @@
 
 @interface SetGameViewController ()
 
+@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
+
 @end
 
 @implementation SetGameViewController
@@ -19,17 +21,29 @@
 @synthesize game = _game;
 @synthesize gameResult = _gameResult;
 
+- (void)setCardButtons:(NSArray *)cardButtons
+{
+    _cardButtons = cardButtons;
+    [self updateUI];
+}
+
 - (CardMatchingGame *)game
 {
     if (!_game) {
-        _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
-                                                  usingDeck:[[SetCardDeck alloc] init]];
+        _game = [super game];
         _game.numberOfMatchingCards = 3;
-        _game.matchBonus = self.gameSettings.matchBonus;
-        _game.mismatchPenalty = self.gameSettings.mismatchPenalty;
-        _game.flipCost = self.gameSettings.flipCost;
     }
     return _game;
+}
+
+- (Deck *)createDeck
+{
+    return [[SetCardDeck alloc] init];
+}
+
+- (NSUInteger)startingCardCount
+{
+    return [self.cardButtons count];
 }
 
 - (GameResult *)gameResult
@@ -105,6 +119,20 @@
     [super updateUI];
     
     self.resultOfLastFlipLabel.attributedText = lastFlip;
+}
+
+- (IBAction)flipCard:(UIButton *)sender
+{
+    self.cardModeSelector.enabled = NO;
+    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
+    self.flipCount++;
+    
+    if (![[self.history lastObject] isEqualToString:self.game.descriptionOfLastFlip])
+        [self.history addObject:self.game.descriptionOfLastFlip];
+    
+    self.gameResult.score = self.game.score;
+    
+    [self updateUI];
 }
 
 

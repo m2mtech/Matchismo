@@ -8,6 +8,8 @@
 
 #import "CardGameViewController.h"
 #import "PlayingCardDeck.h"
+#import "PlayingCard.h"
+#import "PlayingCardCollectionViewCell.h"
 
 @interface CardGameViewController ()
 
@@ -21,15 +23,35 @@
 - (CardMatchingGame *)game
 {
     if (!_game) {
-        _game = [[CardMatchingGame alloc] initWithCardCount:[self.cardButtons count]
-                                                  usingDeck:[[PlayingCardDeck alloc] init]];
+        _game = [super game];
         //[self cardModeChanged:self.cardModeSelector];
         _game.numberOfMatchingCards = 2;
-        _game.matchBonus = self.gameSettings.matchBonus;
-        _game.mismatchPenalty = self.gameSettings.mismatchPenalty;
-        _game.flipCost = self.gameSettings.flipCost;
     }
     return _game;
+}
+
+- (Deck *)createDeck
+{
+    return [[PlayingCardDeck alloc] init];
+}
+
+- (NSUInteger)startingCardCount
+{
+    return 20;
+}
+
+- (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card
+{
+    if ([cell isKindOfClass:[PlayingCardCollectionViewCell class]]) {
+        PlayingCardView *playingCardView = ((PlayingCardCollectionViewCell *)cell).playingCardView;
+        if ([card isKindOfClass:[PlayingCard class]]) {
+            PlayingCard *playingCard = (PlayingCard *)card;
+            playingCardView.rank = playingCard.rank;
+            playingCardView.suit = playingCard.suit;
+            playingCardView.faceUp = playingCard.isFaceUp;
+            playingCardView.alpha = playingCard.isUnplayable ? 0.3 : 1.0;
+        }
+    }
 }
 
 - (GameResult *)gameResult
@@ -37,28 +59,6 @@
     if (!_gameResult) _gameResult = [[GameResult alloc] init];
     _gameResult.gameType = @"Card Matching";
     return _gameResult;
-}
-
-- (void)updateUI
-{
-    UIImage *cardBackImage = [UIImage imageNamed:@"cardback.png"];
-    
-    for (UIButton *cardButton in self.cardButtons) {
-        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-        [cardButton setTitle:card.contents forState:UIControlStateSelected];
-        [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
-        cardButton.selected = card.isFaceUp;
-        cardButton.enabled = !card.isUnplayable;
-        cardButton.alpha = (card.isUnplayable ? 0.3 : 1.0);
-        
-        if (!card.isFaceUp) {
-            [cardButton setImage:cardBackImage forState:UIControlStateNormal];
-        } else {
-            [cardButton setImage:nil forState:UIControlStateNormal];
-        }
-    }
-    
-    [super updateUI];
 }
 
 @end
