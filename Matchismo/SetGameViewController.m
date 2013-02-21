@@ -38,6 +38,11 @@
     return @"Set Game";
 }
 
+- (BOOL)removeUnplayableCards
+{
+    return YES;
+}
+
 - (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card
 {
     if ([cell isKindOfClass:[SetCardCollectionViewCell class]]) {

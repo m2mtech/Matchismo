@@ -29,6 +29,11 @@
     return _cards;
 }
 
+- (int)numberOfCards
+{
+    return [self.cards count];
+}
+
 - (int)numberOfMatchingCards
 {
     if (!_numberOfMatchingCards) {
@@ -112,7 +117,6 @@
                     card.unplayable = YES;
                     for (Card *otherCard in otherCards) {
                         otherCard.unplayable = YES;
-                        
                     }
                     self.score += matchScore * self.matchBonus;
                     self.descriptionOfLastFlip =
@@ -136,6 +140,11 @@
         }
         card.faceUp = !card.faceUp;
     }
+}
+
+- (void)removeCardAtIndex:(NSUInteger)index
+{
+    [self.cards removeObjectAtIndex:index];
 }
 
 @end

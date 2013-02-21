@@ -38,7 +38,7 @@
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return self.startingCardCount;
+    return self.game.numberOfCards;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -130,6 +130,16 @@
     if (indexPath) {
         [self.game flipCardAtIndex:indexPath.item];
         self.flipCount++;
+        
+        if (self.removeUnplayableCards) {
+            for (int i = 0; i < self.game.numberOfCards; i++) {
+                Card *card = [self.game cardAtIndex:i];
+                if (card.isUnplayable) {
+                    [self.game removeCardAtIndex:i];
+                    [self.cardCollectionView deleteItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:i inSection:0]]];
+                }
+            }
+        }
         
         if (![[self.history lastObject] isEqualToString:self.game.descriptionOfLastFlip])
             [self.history addObject:self.game.descriptionOfLastFlip];

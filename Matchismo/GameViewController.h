@@ -19,6 +19,8 @@
 
 - (void)updateUI;
 
+@property (nonatomic) BOOL removeUnplayableCards;
+
 // abstract
 - (Deck *)createDeck;
 
