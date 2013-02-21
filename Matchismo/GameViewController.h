@@ -34,7 +34,11 @@
 
 // abstract
 - (Deck *)createDeck;
+
 @property (nonatomic) NSUInteger startingCardCount;
+@property (nonatomic) NSUInteger numberOfMatchingCards;
+@property (strong, nonatomic) NSString *gameType;
+
 - (void)updateCell:(UICollectionViewCell *)cell
          usingCard:(Card *)card;
 

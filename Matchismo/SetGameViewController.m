@@ -18,22 +18,10 @@
 
 @implementation SetGameViewController
 
-@synthesize game = _game;
-@synthesize gameResult = _gameResult;
-
 - (void)setCardButtons:(NSArray *)cardButtons
 {
     _cardButtons = cardButtons;
     [self updateUI];
-}
-
-- (CardMatchingGame *)game
-{
-    if (!_game) {
-        _game = [super game];
-        _game.numberOfMatchingCards = 3;
-    }
-    return _game;
 }
 
 - (Deck *)createDeck
@@ -46,11 +34,14 @@
     return [self.cardButtons count];
 }
 
-- (GameResult *)gameResult
+- (NSUInteger)numberOfMatchingCards
 {
-    if (!_gameResult) _gameResult = [[GameResult alloc] init];
-    _gameResult.gameType = @"Set Game";
-    return _gameResult;
+    return 3;
+}
+
+- (NSString *)gameType
+{
+    return @"Set Game";
 }
 
 - (NSAttributedString *)updateAttributedString:(NSAttributedString *)attributedString withAttributesOfCard:(SetCard *)card

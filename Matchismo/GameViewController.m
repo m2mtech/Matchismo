@@ -9,6 +9,7 @@
 #import "GameViewController.h"
 
 @interface GameViewController () <UICollectionViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 
 @end
@@ -59,6 +60,7 @@
     if (!_game) {
         _game = [[CardMatchingGame alloc] initWithCardCount:self.startingCardCount
                                                   usingDeck:[self createDeck]];
+        _game.numberOfMatchingCards = self.numberOfMatchingCards;
         _game.matchBonus = self.gameSettings.matchBonus;
         _game.mismatchPenalty = self.gameSettings.mismatchPenalty;
         _game.flipCost = self.gameSettings.flipCost;
@@ -74,6 +76,7 @@
 - (GameResult *)gameResult
 {
     if (!_gameResult) _gameResult = [[GameResult alloc] init];
+    _gameResult.gameType = self.gameType;
     return _gameResult;
 }
 

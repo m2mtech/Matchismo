@@ -17,19 +17,6 @@
 
 @implementation CardGameViewController
 
-@synthesize game = _game;
-@synthesize gameResult = _gameResult;
-
-- (CardMatchingGame *)game
-{
-    if (!_game) {
-        _game = [super game];
-        //[self cardModeChanged:self.cardModeSelector];
-        _game.numberOfMatchingCards = 2;
-    }
-    return _game;
-}
-
 - (Deck *)createDeck
 {
     return [[PlayingCardDeck alloc] init];
@@ -38,6 +25,16 @@
 - (NSUInteger)startingCardCount
 {
     return 20;
+}
+
+- (NSUInteger)numberOfMatchingCards
+{
+    return 2;
+}
+
+- (NSString *)gameType
+{
+    return @"Card Matching";
 }
 
 - (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card
@@ -52,13 +49,6 @@
             playingCardView.alpha = playingCard.isUnplayable ? 0.3 : 1.0;
         }
     }
-}
-
-- (GameResult *)gameResult
-{
-    if (!_gameResult) _gameResult = [[GameResult alloc] init];
-    _gameResult.gameType = @"Card Matching";
-    return _gameResult;
 }
 
 @end
