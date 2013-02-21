@@ -39,4 +39,28 @@
     [[NSString stringWithFormat:@"%d", self.number] drawAtPoint:point withFont:[UIFont systemFontOfSize:10]];
 }
 
+- (void)setColor:(NSString *)color
+{
+    _color = color;
+    [self setNeedsDisplay];
+}
+
+- (void)setSymbol:(NSString *)symbol
+{
+    _symbol = symbol;
+    [self setNeedsDisplay];
+}
+
+- (void)setShading:(NSString *)shading
+{
+    _shading = shading;
+    [self setNeedsDisplay];
+}
+
+- (void)setNumber:(NSUInteger)number
+{
+    _number = number;
+    [self setNeedsDisplay];
+}
+
 @end
