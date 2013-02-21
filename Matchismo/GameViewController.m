@@ -10,6 +10,20 @@
 
 @interface GameViewController () <UICollectionViewDataSource>
 
+@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
+@property (nonatomic) int flipCount;
+
+@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
+
+@property (weak, nonatomic) IBOutlet UISlider *historySlider;
+@property (strong, nonatomic) NSMutableArray *history;
+
+@property (weak, nonatomic) IBOutlet UISegmentedControl *cardModeSelector;
+
+@property (strong, nonatomic) GameResult *gameResult;
+
+@property (strong, nonatomic) GameSettings *gameSettings;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 
 @end
@@ -109,7 +123,7 @@
     [self.historySlider setValue:maxValue animated:YES];
 }
 
-- (IBAction)flipCards:(UITapGestureRecognizer *)gesture
+- (IBAction)flipCard:(UITapGestureRecognizer *)gesture
 {
     CGPoint tapLocation = [gesture locationInView:self.cardCollectionView];
     NSIndexPath *indexPath = [self.cardCollectionView indexPathForItemAtPoint:tapLocation];
@@ -124,8 +138,7 @@
         
         [self updateUI];
         self.cardModeSelector.enabled = NO;
-    }
-    
+    }    
 }
 
 - (IBAction)dealButtonPressed:(UIButton *)sender {

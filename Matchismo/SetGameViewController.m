@@ -9,20 +9,14 @@
 #import "SetGameViewController.h"
 #import "SetCardDeck.h"
 #import "SetCard.h"
+#import "SetCardView.h"
+#import "SetCardCollectionViewCell.h"
 
 @interface SetGameViewController ()
-
-@property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *cardButtons;
 
 @end
 
 @implementation SetGameViewController
-
-- (void)setCardButtons:(NSArray *)cardButtons
-{
-    _cardButtons = cardButtons;
-    [self updateUI];
-}
 
 - (Deck *)createDeck
 {
@@ -31,7 +25,7 @@
 
 - (NSUInteger)startingCardCount
 {
-    return [self.cardButtons count];
+    return 12;
 }
 
 - (NSUInteger)numberOfMatchingCards
@@ -42,6 +36,22 @@
 - (NSString *)gameType
 {
     return @"Set Game";
+}
+
+- (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card
+{
+    if ([cell isKindOfClass:[SetCardCollectionViewCell class]]) {
+        SetCardView *setCardView = ((SetCardCollectionViewCell *)cell).setCardView;
+        if ([card isKindOfClass:[SetCard class]]) {
+            SetCard *setCard = (SetCard *)card;
+            setCardView.color = setCard.color;
+            setCardView.symbol = setCard.symbol;
+            setCardView.shading = setCard.shading;
+            setCardView.number = setCard.number;
+            setCardView.faceUp = setCard.isFaceUp;
+            setCardView.alpha = setCard.isUnplayable ? 0.3 : 1.0;
+        }
+    }
 }
 
 - (NSAttributedString *)updateAttributedString:(NSAttributedString *)attributedString withAttributesOfCard:(SetCard *)card
@@ -88,43 +98,9 @@
 {
     NSAttributedString *lastFlip = [[NSAttributedString alloc] initWithString:self.game.descriptionOfLastFlip ? self.game.descriptionOfLastFlip : @""];
     
-    for (UIButton *cardButton in self.cardButtons) {
-        Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
-        NSAttributedString *title = [[NSAttributedString alloc] initWithString:card.contents];
-        if ([card isKindOfClass:[SetCard class]]) {
-            SetCard *setCard = (SetCard *)card;
-            title = [self updateAttributedString:title withAttributesOfCard:setCard];
-            lastFlip = [self updateAttributedString:lastFlip withAttributesOfCard:setCard];
-       }
-        [cardButton setAttributedTitle:title forState:UIControlStateNormal];
-        cardButton.selected = card.isFaceUp;
-        cardButton.enabled = !card.isUnplayable;
-        cardButton.alpha = (card.isUnplayable ? 0.3 : 1.0);
-        if (card.isFaceUp) {
-            [cardButton setBackgroundColor:[UIColor colorWithWhite:0.9 alpha:1.0]];
-        } else {
-            [cardButton setBackgroundColor:[UIColor clearColor]];
-        }
-    }
-    
     [super updateUI];
     
     self.resultOfLastFlipLabel.attributedText = lastFlip;
 }
-
-- (IBAction)flipCard:(UIButton *)sender
-{
-    self.cardModeSelector.enabled = NO;
-    [self.game flipCardAtIndex:[self.cardButtons indexOfObject:sender]];
-    self.flipCount++;
-    
-    if (![[self.history lastObject] isEqualToString:self.game.descriptionOfLastFlip])
-        [self.history addObject:self.game.descriptionOfLastFlip];
-    
-    self.gameResult.score = self.game.score;
-    
-    [self updateUI];
-}
-
 
 @end

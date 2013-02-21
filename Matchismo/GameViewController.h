@@ -13,22 +13,9 @@
 
 @interface GameViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UILabel *flipsLabel;
-@property (nonatomic) int flipCount;
 @property (weak, nonatomic) IBOutlet UILabel *resultOfLastFlipLabel;
 
-@property (weak, nonatomic) IBOutlet UILabel *scoreLabel;
-
-@property (weak, nonatomic) IBOutlet UISlider *historySlider;
-@property (strong, nonatomic) NSMutableArray *history;
-
-@property (weak, nonatomic) IBOutlet UISegmentedControl *cardModeSelector;
-
 @property (strong, nonatomic) CardMatchingGame *game;
-
-@property (strong, nonatomic) GameResult *gameResult;
-
-@property (strong, nonatomic) GameSettings *gameSettings;
 
 - (void)updateUI;
 
