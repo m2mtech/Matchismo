@@ -319,14 +319,14 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rao-D0-qi2">
-                                <rect key="frame" x="16" y="377" width="92" height="21"/>
+                                <rect key="frame" x="12" y="377" width="92" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" id="Abv-c0-L4g">
-                                <rect key="frame" x="12" y="348" width="179" height="21"/>
+                                <rect key="frame" x="12" y="343" width="179" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Label">
@@ -477,9 +477,6 @@
         <class className="SettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="flipCostSliderChanged:" candidateClass="UISlider"/>
-                <relationship kind="action" name="matchBonusSliderChanged:" candidateClass="UISlider"/>
-                <relationship kind="action" name="mismatchPenaltySliderChanged:" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="flipCostLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="flipCostSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="matchBonusLabel" candidateClass="UILabel"/>
@@ -496,9 +493,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

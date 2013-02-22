@@ -99,13 +99,85 @@
     return mutableAttributedString;
 }
 
+- (void)addSetCard:(SetCard *)setCard toView:(UIView *)view atX:(CGFloat)x
+{
+    CGFloat height = self.resultOfLastFlipLabel.bounds.size.height;
+    SetCardView *setCardView = [[SetCardView alloc] initWithFrame:CGRectMake(x, 0, height, height)];
+    setCardView.color = setCard.color;
+    setCardView.symbol = setCard.symbol;
+    setCardView.shading = setCard.shading;
+    setCardView.number = setCard.number;
+    setCardView.backgroundColor = [UIColor clearColor];
+    [view addSubview:setCardView];
+}
+
+#define LASTFLIP_CARD_OFFSET_FACTOR 1.2
+
+- (void)updateUILabel:(UILabel *)label withText:(NSString *)text andSetCards:(NSArray *)setCards
+{
+    if ([setCards count]) {
+        label.text = text;
+        CGFloat x = [label.text sizeWithFont:label.font].width;
+        
+        for (SetCard *setCard in setCards) {
+            [self addSetCard:setCard toView:label atX:x];
+            x += label.bounds.size.height * LASTFLIP_CARD_OFFSET_FACTOR;
+        }
+    } else label.text = @"";
+}
+
 - (void)updateUI
 {
-    NSAttributedString *lastFlip = [[NSAttributedString alloc] initWithString:self.game.descriptionOfLastFlip ? self.game.descriptionOfLastFlip : @""];
-    
     [super updateUI];
     
-    self.resultOfLastFlipLabel.attributedText = lastFlip;
+    for (UIView *view in self.resultOfLastFlipLabel.subviews) {
+        [view removeFromSuperview];
+    }    
+    if (self.game.descriptionOfLastFlip) {
+        if ([self.game.descriptionOfLastFlip rangeOfString:@"Flipped up"].location != NSNotFound) {
+            NSMutableArray *setCards = [[NSMutableArray alloc] init];
+            for (int i = 0; i < self.game.numberOfCards; i++) {
+                Card *card = [self.game cardAtIndex:i];
+                if (card.isFaceUp && [card isKindOfClass:[SetCard class]])
+                    [setCards addObject:(SetCard *)card];
+            }
+            [self updateUILabel:self.resultOfLastFlipLabel withText:@"Flipped up: " andSetCards:setCards];
+        } else if ([self.game.descriptionOfLastFlip rangeOfString:@"Matched"].location != NSNotFound) {
+            [self updateUILabel:self.resultOfLastFlipLabel withText:@"✅ "
+                    andSetCards:[self setCardsFromString:self.game.descriptionOfLastFlip]];
+        } else {
+            [self updateUILabel:self.resultOfLastFlipLabel withText:@"❌ "
+                    andSetCards:[self setCardsFromString:self.game.descriptionOfLastFlip]];
+        }
+    }
+    [self.resultOfLastFlipLabel setNeedsDisplay];    
+}
+
+- (NSArray *)setCardsFromString:(NSString *)string
+{
+    NSString *pattern = [NSString stringWithFormat:@"(%@):(%@):(%@):(\\d+)",
+                         [[SetCard validSymbols] componentsJoinedByString:@"|"],
+                         [[SetCard validColors] componentsJoinedByString:@"|"],
+                         [[SetCard validShadings] componentsJoinedByString:@"|"]];
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:pattern
+                                                                           options:NULL
+                                                                             error:&error];
+    if (error) return nil;
+    NSArray *matches = [regex matchesInString:string
+                                      options:NULL
+                                        range:NSMakeRange(0, [string length])];
+    if (![matches count]) return nil;
+    NSMutableArray *setCards = [[NSMutableArray alloc] init];
+    for (NSTextCheckingResult *match in matches) {
+        SetCard *setCard = [[SetCard alloc] init];
+        setCard.symbol = [string substringWithRange:[match rangeAtIndex:1]];
+        setCard.color = [string substringWithRange:[match rangeAtIndex:2]];
+        setCard.shading = [string substringWithRange:[match rangeAtIndex:3]];
+        setCard.number = [[string substringWithRange:[match rangeAtIndex:4]] intValue];
+        [setCards addObject:setCard];
+    }
+    return setCards;
 }
 
 @end
