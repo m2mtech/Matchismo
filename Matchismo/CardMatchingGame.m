@@ -14,6 +14,7 @@
 @property (readwrite, nonatomic) NSString *descriptionOfLastFlip;
 
 @property (strong, nonatomic) NSMutableArray *cards; // of Card
+@property (strong, nonatomic) Deck *deck;
 
 @end
 
@@ -55,6 +56,7 @@
     self = [super init];
     
     if (self) {
+        _deck = deck;
         for (int i = 0; i < count; i++) {
             Card *card = [deck drawRandomCard];
             if (card) {
@@ -145,6 +147,14 @@
 - (void)removeCardAtIndex:(NSUInteger)index
 {
     [self.cards removeObjectAtIndex:index];
+}
+
+- (void)drawNewCard
+{
+    Card *card = [self.deck drawRandomCard];
+    if (card) {
+        [self.cards addObject:card];
+    }
 }
 
 @end

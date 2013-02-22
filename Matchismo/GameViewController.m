@@ -151,6 +151,13 @@
     }    
 }
 
+- (IBAction)addCardsButtonPressed:(UIButton *)sender {
+    for (int i = 0; i < sender.tag; i++) {
+        [self.game drawNewCard];
+    }
+    [self.cardCollectionView reloadData];
+}
+
 - (IBAction)dealButtonPressed:(UIButton *)sender {
     self.game = nil;
     self.flipCount = 0;
