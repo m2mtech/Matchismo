@@ -156,6 +156,10 @@
         [self.game drawNewCard];
     }
     [self.cardCollectionView reloadData];
+    
+    [self.cardCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(self.game.numberOfCards - 1) inSection:0]
+                                    atScrollPosition:UICollectionViewScrollPositionBottom
+                                            animated:YES];
 }
 
 - (IBAction)dealButtonPressed:(UIButton *)sender {
