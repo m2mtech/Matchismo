@@ -23,6 +23,8 @@
 
 @property (nonatomic) int numberOfCards;
 
+@property (nonatomic) BOOL deckIsEmpty;
+
 // designated initializer
 - (id)initWithCardCount:(NSUInteger)count
               usingDeck:(Deck *)deck;

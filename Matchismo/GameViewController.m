@@ -26,6 +26,8 @@
 
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 
+@property (weak, nonatomic) IBOutlet UIButton *addCardsButton;
+
 @end
 
 @implementation GameViewController
@@ -160,6 +162,10 @@
     [self.cardCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(self.game.numberOfCards - 1) inSection:0]
                                     atScrollPosition:UICollectionViewScrollPositionBottom
                                             animated:YES];
+    if (self.game.deckIsEmpty) {
+        sender.enabled = NO;
+        sender.alpha = 0.5;
+    }
 }
 
 - (IBAction)dealButtonPressed:(UIButton *)sender {
@@ -168,6 +174,11 @@
     self.cardModeSelector.enabled = YES;
     self.history = nil;
     self.gameResult = nil;
+    if (!self.game.deckIsEmpty) {
+        self.addCardsButton.enabled = YES;
+        self.addCardsButton.alpha = 1.0;
+    }
+    [self.cardCollectionView reloadData];
     [self updateUI];
 }
 

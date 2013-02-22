@@ -50,6 +50,12 @@
     else _numberOfMatchingCards = numberOfMatchingCards;
 }
 
+- (BOOL)deckIsEmpty
+{
+    if (self.deck.numberOfCardsInDeck) return NO;
+    return YES;
+}
+
 - (id)initWithCardCount:(NSUInteger)count
               usingDeck:(Deck *)deck
 {

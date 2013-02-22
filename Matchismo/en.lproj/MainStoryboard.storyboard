@@ -382,6 +382,7 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Set" image="setcards.png" id="bZ6-eE-ykN"/>
                     <connections>
+                        <outlet property="addCardsButton" destination="IuS-dG-ASq" id="CoT-8O-ke7"/>
                         <outlet property="cardCollectionView" destination="S4N-dr-UDd" id="7aM-2h-ccx"/>
                         <outlet property="flipsLabel" destination="wKE-ty-Zlw" id="Bpm-zA-2P9"/>
                         <outlet property="resultOfLastFlipLabel" destination="Abv-c0-L4g" id="gOX-Rm-Xo2"/>
@@ -438,10 +439,12 @@
         <class className="GameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GameViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addCardsButtonPressed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="cardModeChanged:" candidateClass="UISegmentedControl"/>
                 <relationship kind="action" name="dealButtonPressed:" candidateClass="UIButton"/>
                 <relationship kind="action" name="flipCard:" candidateClass="UITapGestureRecognizer"/>
                 <relationship kind="action" name="historySliderChanged:" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="addCardsButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="cardModeSelector" candidateClass="UISegmentedControl"/>
                 <relationship kind="outlet" name="flipsLabel" candidateClass="UILabel"/>
