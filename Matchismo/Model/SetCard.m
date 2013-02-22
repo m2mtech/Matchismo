@@ -76,7 +76,7 @@
 
 - (int)match:(NSArray *)otherCards
 {
-    int score = 0;
+    int score = 0; 
     
     if ([otherCards count] == NUMBER_OF_MATCHING_CARDS - 1) {
         NSMutableArray *colors = [[NSMutableArray alloc] init];

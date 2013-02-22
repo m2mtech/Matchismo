@@ -132,7 +132,7 @@
         self.flipCount++;
         
         if (self.removeUnplayableCards) {
-            for (int i = 0; i < self.game.numberOfCards; i++) {
+            for (int i = self.game.numberOfCards - 1; i >= 0; i--) {
                 Card *card = [self.game cardAtIndex:i];
                 if (card.isUnplayable) {
                     [self.game removeCardAtIndex:i];
