@@ -17,6 +17,8 @@
 
 @property (strong, nonatomic) CardMatchingGame *game;
 
+@property (strong, nonatomic) GameSettings *gameSettings;
+
 - (void)updateUI;
 
 @property (nonatomic) BOOL removeUnplayableCards;

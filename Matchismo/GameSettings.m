@@ -14,6 +14,7 @@
 #define MATCHBONUS_KEY @"MatchBonus_Key"
 #define MISMATCHPENALTY_KEY @"MismatchPenalty_Key"
 #define FLIPCOST_KEY @"FlipCost_Key"
+#define NUMBERPLAYINGCARDS_KEY @"NumberPlayingCards_Key"
 
 - (int)getIntForKey:(NSString *)key withDefaultInt:(int)defaultValue
 {
@@ -36,6 +37,11 @@
 - (int)flipCost
 {
     return [self getIntForKey:FLIPCOST_KEY withDefaultInt:1];
+}
+
+- (int)numberPlayingCards
+{
+    return [self getIntForKey:NUMBERPLAYINGCARDS_KEY withDefaultInt:22];
 }
 
 - (void)setInt:(int)value forKey:(NSString *)key
@@ -66,6 +72,12 @@
 {
     if (flipCost != self.flipCost) [self setInt:flipCost forKey:FLIPCOST_KEY];
 
+}
+
+- (void)setNumberPlayingCards:(int)numberPlayingCards
+{
+    if (numberPlayingCards != self.numberPlayingCards)
+        [self setInt:numberPlayingCards forKey:NUMBERPLAYINGCARDS_KEY];
 }
 
 @end

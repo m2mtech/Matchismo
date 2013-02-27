@@ -14,9 +14,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *matchBonusLabel;
 @property (weak, nonatomic) IBOutlet UILabel *mismatchPenaltyLabel;
 @property (weak, nonatomic) IBOutlet UILabel *flipCostLabel;
+@property (weak, nonatomic) IBOutlet UILabel *numberPlayingCardsLabel;
 @property (weak, nonatomic) IBOutlet UISlider *matchBonusSlider;
 @property (weak, nonatomic) IBOutlet UISlider *mismatchPenaltySlider;
 @property (weak, nonatomic) IBOutlet UISlider *flipCostSlider;
+@property (weak, nonatomic) IBOutlet UISlider *numberPlayingCardsSlider;
 
 @property (strong, nonatomic) GameSettings *gameSettings;
 
@@ -57,15 +59,22 @@
     self.gameSettings.flipCost = floor(sender.value);
 }
 
+- (IBAction)numberPlayingCardsChanged:(UISlider *)sender {
+    [self setLabel:self.numberPlayingCardsLabel forSlider:sender];
+    self.gameSettings.numberPlayingCards = floor(sender.value);
+}
+
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     self.matchBonusSlider.value = self.gameSettings.matchBonus;
     self.mismatchPenaltySlider.value = self.gameSettings.mismatchPenalty;
     self.flipCostSlider.value = self.gameSettings.flipCost;
+    self.numberPlayingCardsSlider.value = self.gameSettings.numberPlayingCards;
     [self setLabel:self.matchBonusLabel forSlider:self.matchBonusSlider];
     [self setLabel:self.mismatchPenaltyLabel forSlider:self.mismatchPenaltySlider];
     [self setLabel:self.flipCostLabel forSlider:self.flipCostSlider];
+    [self setLabel:self.numberPlayingCardsLabel forSlider:self.numberPlayingCardsSlider];
 }
 
 @end

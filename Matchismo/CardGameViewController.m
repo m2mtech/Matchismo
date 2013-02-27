@@ -24,7 +24,7 @@
 
 - (NSUInteger)startingCardCount
 {
-    return 22;
+    return self.gameSettings.numberPlayingCards;
 }
 
 - (NSUInteger)numberOfMatchingCards

@@ -274,11 +274,30 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="22" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zw0-Ok-rjw">
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Number of Cards to Deal for Playing Card Game:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="NpW-G7-AQT">
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="22" minValue="2" maxValue="52" translatesAutoresizingMaskIntoConstraints="NO" id="14R-HH-Ju1">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="285" id="evz-zv-IhO"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="numberPlayingCardsChanged:" destination="QxR-0z-tn8" eventType="valueChanged" id="cnD-nX-w8x"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="f8M-ma-N0l" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="1Q4-iG-jqd"/>
                             <constraint firstItem="meN-F7-CIV" firstAttribute="top" secondItem="sTH-qb-Fcg" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="356-FN-lvi"/>
+                            <constraint firstAttribute="trailing" secondItem="NpW-G7-AQT" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="4QP-kP-JBL"/>
                             <constraint firstItem="Nlk-dn-xlt" firstAttribute="leading" secondItem="f8M-ma-N0l" secondAttribute="leading" type="default" id="5Hf-YZ-Th0"/>
                             <constraint firstAttribute="trailing" secondItem="4cH-pC-eJY" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="80D-pn-8rD"/>
                             <constraint firstItem="4cH-pC-eJY" firstAttribute="leading" secondItem="Nlk-dn-xlt" secondAttribute="leading" type="default" id="ATT-iK-4FQ"/>
@@ -287,14 +306,21 @@
                             <constraint firstAttribute="trailing" secondItem="Nlk-dn-xlt" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Lgx-FC-nGi"/>
                             <constraint firstItem="dlM-UH-QT5" firstAttribute="leading" secondItem="ZWl-Oh-uWE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Lva-oE-7Ww"/>
                             <constraint firstItem="sTH-qb-Fcg" firstAttribute="leading" secondItem="ZWl-Oh-uWE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="UOT-4z-cF2"/>
+                            <constraint firstItem="14R-HH-Ju1" firstAttribute="top" secondItem="zw0-Ok-rjw" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Uhv-Ge-kPu"/>
                             <constraint firstItem="hHo-BV-0iw" firstAttribute="top" secondItem="sL5-UL-Mr2" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="W3m-fe-4iB"/>
                             <constraint firstItem="Ekq-ch-bCa" firstAttribute="leading" secondItem="ZWl-Oh-uWE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="WJo-vg-PyF"/>
                             <constraint firstItem="sL5-UL-Mr2" firstAttribute="top" secondItem="ZWl-Oh-uWE" secondAttribute="top" constant="103" id="XIt-9p-Ov4"/>
                             <constraint firstAttribute="trailing" secondItem="hHo-BV-0iw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Xml-qn-9sd"/>
                             <constraint firstItem="sTH-qb-Fcg" firstAttribute="top" secondItem="ZWl-Oh-uWE" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Xv6-px-aa2"/>
                             <constraint firstItem="sL5-UL-Mr2" firstAttribute="leading" secondItem="ZWl-Oh-uWE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Zfu-dV-8fR"/>
+                            <constraint firstAttribute="bottom" secondItem="NpW-G7-AQT" secondAttribute="bottom" constant="117" id="ac0-Wu-p6D"/>
+                            <constraint firstItem="NpW-G7-AQT" firstAttribute="leading" secondItem="ZWl-Oh-uWE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="cMy-Ae-o2Z"/>
+                            <constraint firstItem="zw0-Ok-rjw" firstAttribute="leading" secondItem="f8M-ma-N0l" secondAttribute="leading" type="default" id="dvU-Rg-gfm"/>
+                            <constraint firstAttribute="bottom" secondItem="14R-HH-Ju1" secondAttribute="bottom" constant="78" id="j6j-FC-PVR"/>
+                            <constraint firstAttribute="trailing" secondItem="14R-HH-Ju1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ngP-8B-M8l"/>
                             <constraint firstItem="f8M-ma-N0l" firstAttribute="baseline" secondItem="dlM-UH-QT5" secondAttribute="baseline" type="default" id="phd-Z4-P0A"/>
                             <constraint firstAttribute="trailing" secondItem="meN-F7-CIV" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="q5f-9O-l8V"/>
+                            <constraint firstAttribute="trailing" secondItem="zw0-Ok-rjw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="rdi-uZ-Muj"/>
                             <constraint firstItem="hHo-BV-0iw" firstAttribute="leading" secondItem="ZWl-Oh-uWE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="sde-Mb-mI8"/>
                             <constraint firstItem="4cH-pC-eJY" firstAttribute="top" secondItem="ZWl-Oh-uWE" secondAttribute="top" constant="20" symbolic="YES" type="default" id="spF-Em-JBK"/>
                             <constraint firstItem="meN-F7-CIV" firstAttribute="leading" secondItem="ZWl-Oh-uWE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="xFY-k2-pUd"/>
@@ -310,6 +336,8 @@
                         <outlet property="matchBonusSlider" destination="meN-F7-CIV" id="NXB-xe-UVY"/>
                         <outlet property="mismatchPenaltyLabel" destination="Nlk-dn-xlt" id="zWk-Dp-mUy"/>
                         <outlet property="mismatchPenaltySlider" destination="hHo-BV-0iw" id="uor-ZH-kRk"/>
+                        <outlet property="numberPlayingCardsLabel" destination="zw0-Ok-rjw" id="Raj-CT-y0x"/>
+                        <outlet property="numberPlayingCardsSlider" destination="14R-HH-Ju1" id="jav-36-Qpe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wJg-5g-jkO" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -537,6 +565,8 @@
                 <relationship kind="outlet" name="matchBonusSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="mismatchPenaltyLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="mismatchPenaltySlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="numberPlayingCardsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="numberPlayingCardsSlider" candidateClass="UISlider"/>
             </relationships>
         </class>
         <class className="UICollectionReusableView" superclassName="UIView">

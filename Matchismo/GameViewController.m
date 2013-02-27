@@ -22,8 +22,6 @@
 
 @property (strong, nonatomic) GameResult *gameResult;
 
-@property (strong, nonatomic) GameSettings *gameSettings;
-
 @property (weak, nonatomic) IBOutlet UICollectionView *cardCollectionView;
 
 @property (weak, nonatomic) IBOutlet UIButton *addCardsButton;
