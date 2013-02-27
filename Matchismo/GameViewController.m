@@ -156,8 +156,9 @@
 - (IBAction)addCardsButtonPressed:(UIButton *)sender {
     for (int i = 0; i < sender.tag; i++) {
         [self.game drawNewCard];
+        [self.cardCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:(self.game.numberOfCards - 1) inSection:0]]];
     }
-    [self.cardCollectionView reloadData];
+//    [self.cardCollectionView reloadData];
     
     [self.cardCollectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForItem:(self.game.numberOfCards - 1) inSection:0]
                                     atScrollPosition:UICollectionViewScrollPositionBottom
