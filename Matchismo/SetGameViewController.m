@@ -43,7 +43,9 @@
     return YES;
 }
 
-- (void)updateCell:(UICollectionViewCell *)cell usingCard:(Card *)card
+- (void)updateCell:(UICollectionViewCell *)cell
+         usingCard:(Card *)card
+       atIndexPath:(NSIndexPath *)indexPath
 {
     if ([cell isKindOfClass:[SetCardCollectionViewCell class]]) {
         SetCardView *setCardView = ((SetCardCollectionViewCell *)cell).setCardView;
@@ -53,10 +55,27 @@
             setCardView.symbol = setCard.symbol;
             setCardView.shading = setCard.shading;
             setCardView.number = setCard.number;
-            setCardView.faceUp = setCard.isFaceUp;
-            setCardView.alpha = setCard.isUnplayable ? 0.3 : 1.0;
+            setCardView.faceUp = !indexPath.section ? setCard.isFaceUp : NO;
+            setCardView.alpha = setCard.isUnplayable && !indexPath.section ? 0.3 : 1.0;
         }
     }
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView
+                  layout:(UICollectionViewLayout*)collectionViewLayout
+  sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 2) return CGSizeMake(40, 40);
+    if (indexPath.section == 1) return CGSizeMake(150, 20);
+    return CGSizeMake(65, 65);
+}
+
+ - (UIEdgeInsets)collectionView:(UICollectionView *)collectionView
+                        layout:(UICollectionViewLayout*)collectionViewLayout
+        insetForSectionAtIndex:(NSInteger)section
+{
+    if (section == 1) return UIEdgeInsetsMake(10, 10, 0, 0);
+    return UIEdgeInsetsMake(10, 10, 10, 10);
 }
 
 - (NSAttributedString *)updateAttributedString:(NSAttributedString *)attributedString withAttributesOfCard:(SetCard *)card

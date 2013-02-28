@@ -31,6 +31,7 @@
 @property (strong, nonatomic) NSString *gameType;
 
 - (void)updateCell:(UICollectionViewCell *)cell
-         usingCard:(Card *)card;
+         usingCard:(Card *)card
+       atIndexPath:(NSIndexPath *)indexPath;
 
 @end

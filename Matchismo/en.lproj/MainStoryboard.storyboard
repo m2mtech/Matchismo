@@ -71,6 +71,15 @@
                                             <outlet property="playingCardView" destination="aUS-P6-4Bp" id="kd4-IS-GGf"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="" reuseIdentifier="HeaderCell" id="FRJ-bv-6xv">
+                                        <rect key="frame" x="83" y="0.0" width="70" height="90"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="70" height="90"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="2" id="gka-jZ-OyL"/>
@@ -441,6 +450,15 @@
                                             <outlet property="setCardView" destination="am7-rZ-ZZr" id="mwI-u0-ksh"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="HeaderCell" reuseIdentifier="HeaderCell" id="WeJ-BK-Xaa">
+                                        <rect key="frame" x="85" y="0.0" width="65" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="65" height="65"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                    </collectionViewCell>
                                 </cells>
                                 <connections>
                                     <outlet property="dataSource" destination="wuR-G5-Ryy" id="73c-cc-b4T"/>
@@ -523,6 +541,11 @@
         <class className="GameViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GameViewController.h"/>
             <relationships>
+                <relationship kind="action" name="addCardsButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="cardModeChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="dealButtonPressed:" candidateClass="UIButton"/>
+                <relationship kind="action" name="flipCard:" candidateClass="UITapGestureRecognizer"/>
+                <relationship kind="action" name="historySliderChanged:" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="addCardsButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="cardCollectionView" candidateClass="UICollectionView"/>
                 <relationship kind="outlet" name="cardModeSelector" candidateClass="UISegmentedControl"/>
@@ -559,6 +582,10 @@
         <class className="SettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="flipCostSliderChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="matchBonusSliderChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="mismatchPenaltySliderChanged:" candidateClass="UISlider"/>
+                <relationship kind="action" name="numberPlayingCardsChanged:" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="flipCostLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="flipCostSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="matchBonusLabel" candidateClass="UILabel"/>
@@ -577,6 +604,9 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
+        </class>
+        <class className="UICollectionViewLayout" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
