@@ -205,6 +205,13 @@
 }
 
 - (IBAction)addCardsButtonPressed:(UIButton *)sender {
+    
+    if ([[self.game matchingCards] count]) {
+        self.game.score -= self.gameSettings.mismatchPenalty * sender.tag;
+        self.gameResult.score = self.game.score;
+        [self updateUI];
+    }
+    
     for (int i = 0; i < sender.tag; i++) {
         [self.game drawNewCard];
         [self.cardCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:(self.game.numberOfCards - 1) inSection:0]]];
@@ -217,6 +224,14 @@
     if (self.game.deckIsEmpty) {
         sender.enabled = NO;
         sender.alpha = 0.5;
+        if (![[self.game matchingCards] count]) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:@"No matches left ..."
+                                                           delegate:nil
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Game Over!", nil];
+            [alert show];
+        }
     }
 }
 

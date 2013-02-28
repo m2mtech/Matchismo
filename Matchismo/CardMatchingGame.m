@@ -10,7 +10,7 @@
 
 @interface CardMatchingGame()
 
-@property (readwrite, nonatomic) int score;
+//@property (readwrite, nonatomic) int score;
 @property (readwrite, nonatomic) NSString *descriptionOfLastFlip;
 
 @property (strong, nonatomic) NSMutableArray *cards; // of Card
@@ -148,6 +148,72 @@
         }
         card.faceUp = !card.faceUp;
     }
+}
+
+- (NSArray *)nextCombinationAfter:(NSArray *)combination
+{
+    int n = [self.cards count];
+    int k = self.numberOfMatchingCards;
+    int i = k - 1;
+    NSMutableArray *next = [combination mutableCopy];
+    next[i] = @([next[i] intValue] + 1);
+    while ((i > 0) && ([next[i] intValue] > n - k + i)) {
+        i--;
+        next[i] = @([next[i] intValue] + 1);
+    }
+    if ([next[0] intValue] > n - k) return nil;
+    for (i = i + 1; i < k; ++i) {
+        next[i] = @([next[i - 1] intValue] + 1);
+    }
+    return next;
+}
+
+- (BOOL)validCombination:(NSArray *)combination
+{
+    for (NSNumber *index in combination) {
+        Card *card = self.cards[[index intValue]];
+        if (card.isUnplayable) return NO;
+    }
+    return YES;
+}
+
+- (NSArray *)cardsFromCombination:(NSArray *)combination startinWithIndex:(int)start
+{
+    NSMutableArray *cards = [[NSMutableArray alloc] init];
+    for (int i = start; i < [combination count]; i++) {
+        [cards addObject:self.cards[[combination[i] intValue]]];
+    }
+    return cards;
+}
+
+- (NSArray *)cardsFromCombination:(NSArray *)combination
+{
+    return [self cardsFromCombination:combination startinWithIndex:0];
+}
+
+- (NSArray *)otherCardsFromCombination:(NSArray *)combination
+{
+    return [self cardsFromCombination:combination startinWithIndex:1];
+}
+
+- (NSArray *)matchingCards {
+    NSMutableArray *combination = [[NSMutableArray alloc] init];
+    for (int i = 0; i < self.numberOfMatchingCards; i++) {
+        [combination addObject:@(i)];
+    }
+    
+    NSArray *matchedCards;
+    NSArray *nextCombination = combination;
+    do {
+        if (![self validCombination:nextCombination]) continue;
+        if ([self.cards[[nextCombination[0] intValue]] match:[self otherCardsFromCombination:nextCombination]]) {
+            matchedCards = [self cardsFromCombination:nextCombination];
+            break;
+        }
+    } while ((nextCombination = [self nextCombinationAfter:nextCombination]));
+    
+    
+    return matchedCards;
 }
 
 - (void)removeCardAtIndex:(NSUInteger)index

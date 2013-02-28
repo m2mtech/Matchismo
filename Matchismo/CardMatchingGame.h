@@ -12,7 +12,7 @@
 
 @interface CardMatchingGame : NSObject
 
-@property (readonly, nonatomic) int score;
+@property (nonatomic) int score;
 @property (readonly, nonatomic) NSString *descriptionOfLastFlip;
 
 @property (nonatomic) int numberOfMatchingCards;
@@ -33,5 +33,7 @@
 - (void)flipCardAtIndex:(NSUInteger)index;
 - (void)removeCardAtIndex:(NSUInteger)index;
 - (void)drawNewCard;
+
+- (NSArray *)matchingCards;
 
 @end
