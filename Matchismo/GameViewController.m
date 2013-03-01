@@ -29,9 +29,20 @@
 @property (strong, nonatomic) NSMutableArray *matchedCards; // of Card
 @property (strong, nonatomic) NSArray *cheatCards; // of Card
 
+@property (strong, nonatomic) NSMutableArray *playerScores; // of NSNumber
+@property (nonatomic) int currentPlayer;
+
 @end
 
 @implementation GameViewController
+
+- (NSMutableArray *)playerScores
+{
+    if (!_playerScores) {
+        _playerScores = [NSMutableArray arrayWithObjects:@0, @0, nil];
+    }
+    return _playerScores;
+}
 
 - (NSMutableArray *)matchedCards
 {
@@ -168,7 +179,18 @@
         }
     }
     
-    self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    //self.scoreLabel.text = [NSString stringWithFormat:@"Score: %d", self.game.score];
+    NSString *text = [NSString stringWithFormat:@"P1: %@  P2: %@",
+                      self.playerScores[0], self.playerScores[1]];
+    NSMutableAttributedString *label = [[NSMutableAttributedString alloc] initWithString:text];
+    NSRange range = [text rangeOfString:[NSString stringWithFormat:@"P%d: %@",
+                                         self.currentPlayer + 1,
+                                         self.playerScores[self.currentPlayer]]];
+    if (range.location != NSNotFound) {
+        [label addAttributes:@{ NSStrokeWidthAttributeName : @-3,NSForegroundColorAttributeName : [UIColor blueColor] }
+                       range:range];
+    }
+    self.scoreLabel.attributedText = label;
     self.resultOfLastFlipLabel.alpha = 1;
     self.resultOfLastFlipLabel.text = self.game.descriptionOfLastFlip;
     
@@ -222,10 +244,24 @@
         if (![[self.history lastObject] isEqualToString:self.game.descriptionOfLastFlip])
             [self.history addObject:self.game.descriptionOfLastFlip];
         
-        self.gameResult.score = self.game.score;
+        [self calculateMultiPlayerScore];
+        
+        self.gameResult.score = self.game.score; // should also be changed to cope with multiple players ...
         
         [self updateUI];
         self.cardModeSelector.enabled = NO;
+    }    
+}
+
+- (void)calculateMultiPlayerScore
+{
+    int otherPlayer = (self.currentPlayer + 1) % 2;
+    int newScore = self.game.score - [self.playerScores[otherPlayer] intValue];
+    if (newScore < [self.playerScores[self.currentPlayer] intValue]) {
+        self.playerScores[self.currentPlayer] = @(newScore);
+        self.currentPlayer = otherPlayer;
+    } else {
+        self.playerScores[self.currentPlayer] = @(newScore);
     }    
 }
 
@@ -238,6 +274,7 @@
     
     if ([[self.game matchingCards] count]) {
         self.game.score -= self.gameSettings.mismatchPenalty * sender.tag;
+        [self calculateMultiPlayerScore];
         self.gameResult.score = self.game.score;
         [self updateUI];
     }
@@ -273,6 +310,8 @@
     self.gameResult = nil;
     self.matchedCards = nil;
     self.cheatCards = nil;
+    self.playerScores = nil;
+    self.currentPlayer = 0;
     if (!self.game.deckIsEmpty) {
         self.addCardsButton.enabled = YES;
         self.addCardsButton.alpha = 1.0;
