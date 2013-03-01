@@ -72,7 +72,7 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="" reuseIdentifier="HeaderCell" id="FRJ-bv-6xv">
-                                        <rect key="frame" x="83" y="0.0" width="70" height="90"/>
+                                        <rect key="frame" x="83.333335876464844" y="0.0" width="70" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="70" height="90"/>
@@ -363,7 +363,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="350" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AXG-3q-rr3">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="f6F-NR-qhV"/>
+                                    <constraint firstAttribute="width" constant="60" id="UL8-es-2ZE"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Deal">
@@ -395,7 +395,7 @@
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Score: 0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rao-D0-qi2">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="92" id="uUw-lv-cQ5"/>
+                                    <constraint firstAttribute="width" constant="92" id="EqM-oQ-hsZ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -465,21 +465,42 @@
                                     <outletCollection property="gestureRecognizers" destination="erX-50-3eN" appends="YES" id="nlN-Wh-EKu"/>
                                 </connections>
                             </collectionView>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="350" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mHl-3l-ICU">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="yTd-co-2VI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="?">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cheatButtonPressed" destination="wuR-G5-Ryy" eventType="touchUpInside" id="4nZ-S9-LZj"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="rao-D0-qi2" secondAttribute="bottom" constant="9" id="30n-BB-Fpd"/>
                             <constraint firstAttribute="bottom" secondItem="AXG-3q-rr3" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="6cx-Xy-KOI"/>
                             <constraint firstItem="rao-D0-qi2" firstAttribute="top" secondItem="Abv-c0-L4g" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="7UJ-Te-nPi"/>
+                            <constraint firstItem="IuS-dG-ASq" firstAttribute="leading" secondItem="mHl-3l-ICU" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="7e2-el-V8D"/>
+                            <constraint firstItem="mHl-3l-ICU" firstAttribute="baseline" secondItem="AXG-3q-rr3" secondAttribute="baseline" type="default" id="7lp-7A-Yh6"/>
+                            <constraint firstAttribute="bottom" secondItem="rao-D0-qi2" secondAttribute="bottom" constant="9" id="7qx-Ff-0Tb"/>
                             <constraint firstItem="S4N-dr-UDd" firstAttribute="top" secondItem="gpd-kE-y40" secondAttribute="top" type="default" id="7zc-Cj-K6I"/>
+                            <constraint firstAttribute="bottom" secondItem="mHl-3l-ICU" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="CNs-8t-fZj"/>
                             <constraint firstItem="AXG-3q-rr3" firstAttribute="leading" secondItem="IuS-dG-ASq" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="CWd-rm-XYH"/>
+                            <constraint firstItem="AXG-3q-rr3" firstAttribute="baseline" secondItem="IuS-dG-ASq" secondAttribute="baseline" type="default" id="NgS-PO-4Hb"/>
                             <constraint firstItem="S4N-dr-UDd" firstAttribute="leading" secondItem="gpd-kE-y40" secondAttribute="leading" type="default" id="OHD-0U-e3A"/>
-                            <constraint firstItem="Abv-c0-L4g" firstAttribute="top" secondItem="S4N-dr-UDd" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Q1B-J6-2KC"/>
                             <constraint firstItem="rao-D0-qi2" firstAttribute="leading" secondItem="gpd-kE-y40" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="V7n-5S-SEp"/>
+                            <constraint firstItem="mHl-3l-ICU" firstAttribute="leading" secondItem="Abv-c0-L4g" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ZXe-LK-NKV"/>
+                            <constraint firstItem="mHl-3l-ICU" firstAttribute="top" secondItem="S4N-dr-UDd" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="gjd-xr-6j5"/>
                             <constraint firstAttribute="trailing" secondItem="AXG-3q-rr3" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="hdh-8R-voo"/>
                             <constraint firstItem="Abv-c0-L4g" firstAttribute="leading" secondItem="gpd-kE-y40" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="k73-ax-zqI"/>
                             <constraint firstAttribute="bottom" secondItem="IuS-dG-ASq" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="n14-oQ-DCB"/>
-                            <constraint firstItem="IuS-dG-ASq" firstAttribute="leading" secondItem="Abv-c0-L4g" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="q3R-22-RjE"/>
+                            <constraint firstItem="mHl-3l-ICU" firstAttribute="baseline" secondItem="IuS-dG-ASq" secondAttribute="baseline" type="default" id="np1-qK-Alz"/>
                             <constraint firstItem="S4N-dr-UDd" firstAttribute="trailing" secondItem="gpd-kE-y40" secondAttribute="trailing" type="default" id="wvL-m1-NPn"/>
                         </constraints>
                     </view>
@@ -582,10 +603,6 @@
         <class className="SettingsViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/SettingsViewController.h"/>
             <relationships>
-                <relationship kind="action" name="flipCostSliderChanged:" candidateClass="UISlider"/>
-                <relationship kind="action" name="matchBonusSliderChanged:" candidateClass="UISlider"/>
-                <relationship kind="action" name="mismatchPenaltySliderChanged:" candidateClass="UISlider"/>
-                <relationship kind="action" name="numberPlayingCardsChanged:" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="flipCostLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="flipCostSlider" candidateClass="UISlider"/>
                 <relationship kind="outlet" name="matchBonusLabel" candidateClass="UILabel"/>
@@ -604,9 +621,6 @@
         </class>
         <class className="UICollectionViewFlowLayout" superclassName="UICollectionViewLayout">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewFlowLayout.h"/>
-        </class>
-        <class className="UICollectionViewLayout" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UICollectionViewLayout.h"/>
         </class>
     </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

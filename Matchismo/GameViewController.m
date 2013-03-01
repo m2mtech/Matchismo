@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *addCardsButton;
 
 @property (strong, nonatomic) NSMutableArray *matchedCards; // of Card
+@property (strong, nonatomic) NSArray *cheatCards; // of Card
 
 @end
 
@@ -53,11 +54,19 @@
     return self.game.numberOfCards;
 }
 
+- (void)clearCell:(UICollectionViewCell*) cell
+{
+    for (UIView *view in cell.subviews) {
+        if ([view isKindOfClass:[UIImageView class]]) [view removeFromSuperview];
+    }
+}
+
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
                   cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 2) {
         UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayingCard" forIndexPath:indexPath];
+        [self clearCell:cell];
         [self updateCell:cell usingCard:self.matchedCards[indexPath.item] atIndexPath:indexPath];
         return cell;
     }
@@ -68,13 +77,14 @@
         textLabel.textColor = [UIColor blackColor];
         textLabel.backgroundColor = [UIColor clearColor];
         textLabel.font = [UIFont fontWithName:@"System Bold" size:20.0];
-
         [cell addSubview:textLabel];
         return cell;
     }
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"PlayingCard" forIndexPath:indexPath];
+    [self clearCell:cell];
     Card *card = [self.game cardAtIndex:indexPath.item];
     [self updateCell:cell usingCard:card atIndexPath:indexPath];
+    [self updateCell:cell ifCheatCard:card];
     return cell;
 }
 
@@ -83,6 +93,18 @@
        atIndexPath:(NSIndexPath *)indexPath
 {
     // abstract
+}
+
+- (void)updateCell:(UICollectionViewCell *)cell ifCheatCard:(Card *)card
+{
+    if ([self.cheatCards containsObject:card]) {
+        UIImage *image = [UIImage imageNamed:@"star.png"];
+        UIImageView *imageView = [[UIImageView alloc] initWithImage:image];
+        CGFloat min = cell.bounds.size.width;
+        if (cell.bounds.size.height < min) min = cell.bounds.size.height;
+        imageView.frame = CGRectMake(min / 10, min / 10, min / 5, min / 5);
+        [cell addSubview:imageView];        
+    }
 }
 
 - (void)setFlipCount:(int)flipCount
@@ -132,6 +154,7 @@
 - (void)updateUI
 {
     for (UICollectionViewCell *cell in [self.cardCollectionView visibleCells]) {
+        [self clearCell:cell];
         NSIndexPath *indexPath = [self.cardCollectionView indexPathForCell:cell];
         if (indexPath.section == 2) {
             [self updateCell:cell
@@ -141,6 +164,7 @@
             [self updateCell:cell
                    usingCard:[self.game cardAtIndex:indexPath.item]
                  atIndexPath:indexPath];
+            [self updateCell:cell ifCheatCard:[self.game cardAtIndex:indexPath.item]];
         }
     }
     
@@ -187,6 +211,7 @@
                 [self.cardCollectionView deleteItemsAtIndexPaths:deleteIndexPaths];
             }
             if ([matchedIndexPaths count]) {
+                self.cheatCards = nil;
                 [self.cardCollectionView insertItemsAtIndexPaths:matchedIndexPaths];
                 if ([self.matchedCards count] == self.numberOfMatchingCards) {
                     [self.cardCollectionView insertItemsAtIndexPaths:@[[NSIndexPath indexPathForItem:0 inSection:1]]];
@@ -202,6 +227,11 @@
         [self updateUI];
         self.cardModeSelector.enabled = NO;
     }    
+}
+
+- (IBAction)cheatButtonPressed {
+    self.cheatCards = [self.game matchingCards];
+    [self updateUI];
 }
 
 - (IBAction)addCardsButtonPressed:(UIButton *)sender {
@@ -242,6 +272,7 @@
     self.history = nil;
     self.gameResult = nil;
     self.matchedCards = nil;
+    self.cheatCards = nil;
     if (!self.game.deckIsEmpty) {
         self.addCardsButton.enabled = YES;
         self.addCardsButton.alpha = 1.0;

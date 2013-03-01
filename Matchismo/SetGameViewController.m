@@ -160,12 +160,15 @@
                 if (card.isFaceUp && [card isKindOfClass:[SetCard class]])
                     [setCards addObject:(SetCard *)card];
             }
-            [self updateUILabel:self.resultOfLastFlipLabel withText:@"Flipped up: " andSetCards:setCards];
+            //[self updateUILabel:self.resultOfLastFlipLabel withText:@"Flipped up: " andSetCards:setCards];
+            [self updateUILabel:self.resultOfLastFlipLabel withText:@"" andSetCards:setCards];
         } else if ([self.game.descriptionOfLastFlip rangeOfString:@"Matched"].location != NSNotFound) {
-            [self updateUILabel:self.resultOfLastFlipLabel withText:@"✅ "
+            //[self updateUILabel:self.resultOfLastFlipLabel withText:@"✅ "
+            [self updateUILabel:self.resultOfLastFlipLabel withText:@""
                     andSetCards:[self setCardsFromString:self.game.descriptionOfLastFlip]];
         } else {
-            [self updateUILabel:self.resultOfLastFlipLabel withText:@"❌ "
+            //[self updateUILabel:self.resultOfLastFlipLabel withText:@"❌ "
+            [self updateUILabel:self.resultOfLastFlipLabel withText:@""
                     andSetCards:[self setCardsFromString:self.game.descriptionOfLastFlip]];
         }
     }
